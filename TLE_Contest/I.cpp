@@ -118,6 +118,16 @@ ll dist(point a, point b)
 #define st string
 
 
+I median( vi &arr){
+    I n = arr.size();
+    if( n % 2 == 0 ){
+        return (arr[n/2] + arr[n/2 - 1]) / 2;
+    }
+    else{
+        return arr[n/2];
+    }
+}
+
 void solve(){
     // ll n ; cin >> n ; 
     // ll m ; cin >> m ;
@@ -126,16 +136,7 @@ void solve(){
     //     cin >> x[i] >> y[i] ;
     // }
 
-    // taking inputs
-   // I n ; cin >> n ;
-    I mat[n] ;
-    foreach(i,0,n,1){
-        cin >> mat[i] ;
-    }
-    
-    
-
-}
+}  
 
 
 
@@ -160,8 +161,6 @@ int32_t main()
     {
         solve();
     }
-
-    //T.C. => O(N^2)
     return 0;
 
 }
@@ -179,5 +178,3 @@ int32_t main()
 ┈╰━━━━━━━━━━━╯┈
 
 */
-
-

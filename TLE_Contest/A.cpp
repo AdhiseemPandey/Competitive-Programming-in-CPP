@@ -118,22 +118,37 @@ ll dist(point a, point b)
 #define st string
 
 
-void solve(){
-    // ll n ; cin >> n ; 
-    // ll m ; cin >> m ;
-    // vi x(n) , y(n) ;
-    // for( ll i = 0 ; i < n ; i++){
-    //     cin >> x[i] >> y[i] ;
-    // }
+void solve() {
+    // rook 1 se 8 
+    // a se h 
+    // abs(current - edge) > 0 => edge pe hoga
+    // current se row phir col me
+    st current ;
+    cin >> current ;
 
-    // taking inputs
-   // I n ; cin >> n ;
-    I mat[n] ;
-    foreach(i,0,n,1){
-        cin >> mat[i] ;
+    char col = current[0];
+    char row = current[1];
+
+    vector<st> moves;
+
+    //all col hai
+    for (char r = '1'; r <= '8'; r++) {
+        if (r != row) {
+            moves.push_back(st(1, col) + r);
+        }
     }
+    //all row hai
+    for (char c = 'a'; c <= 'h'; c++) {
+        if (c != col) {
+            moves.push_back(st(1, c) + row);
+        }
+    }
+
     
-    
+    for (const st &move : moves) {
+        cout << move << " ";
+    }
+    cout << endl;
 
 }
 
@@ -179,5 +194,4 @@ int32_t main()
 ┈╰━━━━━━━━━━━╯┈
 
 */
-
 

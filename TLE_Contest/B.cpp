@@ -118,23 +118,8 @@ ll dist(point a, point b)
 #define st string
 
 
-void solve(){
-    // ll n ; cin >> n ; 
-    // ll m ; cin >> m ;
-    // vi x(n) , y(n) ;
-    // for( ll i = 0 ; i < n ; i++){
-    //     cin >> x[i] >> y[i] ;
-    // }
-
-    // taking inputs
-   // I n ; cin >> n ;
-    I mat[n] ;
-    foreach(i,0,n,1){
-        cin >> mat[i] ;
-    }
+void solve() {
     
-    
-
 }
 
 
@@ -179,5 +164,4 @@ int32_t main()
 ┈╰━━━━━━━━━━━╯┈
 
 */
-
 

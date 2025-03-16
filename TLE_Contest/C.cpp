@@ -125,16 +125,43 @@ void solve(){
     // for( ll i = 0 ; i < n ; i++){
     //     cin >> x[i] >> y[i] ;
     // }
+    // 1 se n balloons no^ed 1 to 100 
+    // f fav ha i
+    // decreasing order
+    // 1st k poped
+    // poped yes : not no : maybe
 
-    // taking inputs
-   // I n ; cin >> n ;
-    I mat[n] ;
+    I n,f,k;
+    cin >> n >> f >> k;
+    vi a(n);
+    rep(i,n) cin >> a[i];
+
+
+    // fav
+    I fav = a[f - 1];
+    
+    sort(a.rbegin(),a.rend());
+
+    // NOTE :
+    // reverse(sort(a.begin(),a.end())); 
+    // reverse and sort funciton cant be used together  
+    I cnt = 0;
+    I updated_rank = 0;
     foreach(i,0,n,1){
-        cin >> mat[i] ;
+        if(a[i] == fav) cnt ++;
+        if( i < k && a[i] == fav) updated_rank ++;
     }
-    
-    
 
+
+    if( updated_rank == cnt && updated_rank > 0 ){
+        py;
+    }
+    else if ( updated_rank == 0){
+        pn;
+    }
+    else{
+        cout << "MAYBE" << endl;
+    }
 }
 
 
@@ -160,8 +187,6 @@ int32_t main()
     {
         solve();
     }
-
-    //T.C. => O(N^2)
     return 0;
 
 }
@@ -179,5 +204,3 @@ int32_t main()
 ┈╰━━━━━━━━━━━╯┈
 
 */
-
-

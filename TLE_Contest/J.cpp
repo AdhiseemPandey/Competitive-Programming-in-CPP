@@ -126,15 +126,37 @@ void solve(){
     //     cin >> x[i] >> y[i] ;
     // }
 
-    // taking inputs
-   // I n ; cin >> n ;
-    I mat[n] ;
-    foreach(i,0,n,1){
-        cin >> mat[i] ;
-    }
-    
-    
+    // soluiton
+    // saare type hoge , nothing to leave 
+    // unme se hi koi multiple type hoga
+    // koi miss na ho logic
 
+    st s, t;
+    cin >> s >> t;
+    // pointers se s aur t me match karna hai
+    I i = 0, j = 0;
+    while (i < s.size() && j < t.size()) {
+        if (s[i] == t[j]) {
+            i++;
+            j++;
+        } else if (j > 0 && t[j] == t[j - 1]) {
+            j++;
+        } else {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+
+    
+    while (j < t.size() && t[j] == t[j - 1]) {
+        j++;
+    }
+
+    if (i == s.size() && j == t.size()) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }
 }
 
 
@@ -160,8 +182,6 @@ int32_t main()
     {
         solve();
     }
-
-    //T.C. => O(N^2)
     return 0;
 
 }
@@ -179,5 +199,3 @@ int32_t main()
 ┈╰━━━━━━━━━━━╯┈
 
 */
-
-
