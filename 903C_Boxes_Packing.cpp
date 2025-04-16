@@ -78,28 +78,28 @@ ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) c
 bool sorta(const pair<int,int> &a,const pair<int,int> &b){return (a.second < b.second);}
 bool sortd(const pair<int,int> &a,const pair<int,int> &b){return (a.second > b.second);}
 
-//Bits
-string decToBinary(int n){string s="";int i = 0;while (n > 0) {s =to_string(n % 2)+s;n = n / 2;i++;}return s;}
-ll binaryToDecimal(string n){string num = n;ll dec_value = 0;int base = 1;int len = num.length();for(int i = len - 1; i >= 0; i--){if (num[i] == '1')dec_value += base;base = base * 2;}return dec_value;}
+// //Bits
+// string decToBinary(int n){string s="";int i = 0;while (n > 0) {s =to_string(n % 2)+s;n = n / 2;i++;}return s;}
+// ll binaryToDecimal(string n){string num = n;ll dec_value = 0;int base = 1;int len = num.length();for(int i = len - 1; i >= 0; i--){if (num[i] == '1')dec_value += base;base = base * 2;}return dec_value;}
 
-//Check
-bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(int i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
-bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
-bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
+// //Check
+// bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(int i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
+// bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
+// bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 
-//Constants
-vector <ll> primes;
-vector <bool> is_prime;
+// //Constants
+// vector <ll> primes;
+// vector <bool> is_prime;
 
-// Mathematical functions
-void Sieve(int n){ is_prime.assign(n + 1, true); is_prime[0] = is_prime[1] = false; for(ll i = 2; i * i <= n; i++) if(is_prime[i]) for(ll j = i * i; j <= n; j += i) is_prime[j] = false;}
-void get_primes(int n){ for(int i = 2; i <= n; i++)  if(is_prime[i])  primes.push_back(i); }
-ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
-ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
-ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);} //__gcd 
-ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
-ll moduloMultiplication(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
-ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y > 0){if (y & 1)res = (res*x) % p;y = y>>1;x = (x*x) % p;}return res;}
+// // Mathematical functions
+// void Sieve(int n){ is_prime.assign(n + 1, true); is_prime[0] = is_prime[1] = false; for(ll i = 2; i * i <= n; i++) if(is_prime[i]) for(ll j = i * i; j <= n; j += i) is_prime[j] = false;}
+// void get_primes(int n){ for(int i = 2; i <= n; i++)  if(is_prime[i])  primes.push_back(i); }
+// ll mod_add(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a + b) % m) + m) % m;}
+// ll mod_sub(ll a, ll b, ll m) {a = a % m; b = b % m; return (((a - b) % m) + m) % m;}
+// ll gcd(ll a, ll b){if (b == 0)return a;return gcd(b, a % b);} //__gcd 
+// ll lcm(ll a, ll b){return (a/gcd(a,b)*b);}
+// ll moduloMultiplication(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
+// ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y > 0){if (y & 1)res = (res*x) % p;y = y>>1;x = (x*x) % p;}return res;}
 //To find modulo inverse, call powermod(A,M-2,M)
 
 struct point
@@ -118,9 +118,9 @@ ll dist(point a, point b)
 #define st string
 
 
-void solve(){
+// void solve(){
     
-}
+// }
 
 
 
@@ -139,12 +139,37 @@ int32_t main()
                                /  /         \  \     |__________/         |_|      |_|    |___________|
 */
     
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        solve();
+    inint(n);
+    vi a(n);
+
+    foreach(i,0,n,1) {
+        cin >> a[i];
     }
+    multiset<I> st;
+    foreach(i,0,n,1) {
+        st.insert(a[i]);
+    }
+    I ans = 0;
+    
+    while( !st.empty() ){
+
+        ans++;
+
+        I val = *st.begin();
+
+        st.erase(st.begin());
+
+        while ( st.upper_bound(val) != st.end() ){
+
+            I newVal = *st.upper_bound(val);
+            st.erase(st.find(newVal));
+            val = newVal;
+
+        }
+    }
+
+    out(ans);
+
     return 0;
 
 }
